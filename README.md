@@ -1,5 +1,3 @@
-6d4973a2d0c01fe46093180d1e3091a8
-https://api.themoviedb.org/3/movie/550?api_key=6d4973a2d0c01fe46093180d1e3091a8
 
 # Getting Started with Create React App
 

@@ -1,0 +1,8 @@
+.link {
+  color: black;
+}
+
+.active_link {
+  color: red;
+  background-color: rgba(188, 143, 183, 0.33);
+}
