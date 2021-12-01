@@ -1,9 +1,9 @@
 const API_KEY = "6d4973a2d0c01fe46093180d1e3091a8";
-const BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
-// https://api.themoviedb.org/3/trending/all/week?api_key=<<api_key>>
+const BASE_URL = 'https://api.themoviedb.org/3/';
+
+
 function fetchMovie () {
-  return fetch(
-    `${BASE_URL}?api_key=${API_KEY}`
+  return fetch(`${BASE_URL}trending/all/week?api_key=${API_KEY}`
   ).then((response) => {
     if (response.ok) {
       return response.json();
@@ -19,5 +19,4 @@ const api = {
 export default api;
 
 
-// 6d4973a2d0c01fe46093180d1e3091a8
-// https://api.themoviedb.org/3/movie/550?api_key=6d4973a2d0c01fe46093180d1e3091a8
+

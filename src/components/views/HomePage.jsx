@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import movieApi from "../services/api";
+import movieApi from "../services/popularMovieApi";
+import { Link } from 'react-router-dom';
 
 
 export default function HomePage() {
     const [movieTrend, setMovieTrendState] = useState(null);
- 
+    const [movieHomeId, setMovieHomeId] = useState('');
+    
     useEffect(() => {
         movieApi
             .fetchMovie()
@@ -12,15 +14,21 @@ export default function HomePage() {
             .catch((error) => console.log(error));
     }, []);
 
+const movieClick = (e) => {
+    e.preventDefault();
+        console.dir(e.currentTarget);
+        setMovieHomeId(e.currentTarget.id);
+    };
+
     return (
         <>
             <h1>Movies</h1>
             {movieTrend && <ul>
                 {movieTrend.map((movie) => {
                     return (
-                        <li key={movie.id}>
+                        <li key={movie.id} onClick={movieClick}>
                             {/* <img src={movie.poster_path} alt={movie.title} /> */}
-                            {movie.original_title}
+                             <Link id={movie.id} to={`/movies${movie.id}`} >{movie.original_title} </Link>
                         </li>
                     )
                 })}

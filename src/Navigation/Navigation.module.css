@@ -1,8 +1,8 @@
-.link {
+.inactive {
   color: black;
 }
 
-.active_link {
+.active {
   color: red;
   background-color: rgba(188, 143, 183, 0.33);
 }
