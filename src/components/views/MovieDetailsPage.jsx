@@ -26,7 +26,7 @@ console.log(movieDetails);
         <p className={styles.text}>Rating : {movieDetails.vote_average}</p>
         <ul className={styles.list}>Genres: {movieDetails.genres.map((genre) => <li key={genre.id} className={styles.text}>{genre.name}</li>)}
         </ul>
-        <ul className={styles.list}>Countries: {movieDetails.production_countries.map((genre) => <li key={genre.id} className={styles.text}>{genre.name}</li>)}
+        <ul className={styles.list}>Countries: {movieDetails.production_countries.map((country) => <li key={country.id} className={styles.text}>{country.name}</li>)}
       </ul>
               <Link to={`cast`} >Cast</Link>
               <Link to={`reviews`} >Reviws</Link>
@@ -35,7 +35,7 @@ console.log(movieDetails);
           }
 
         <Routes>
-        <Route path='cast' element={<Cast  />} /> 
+        <Route path='cast' element={<Cast  />} />
         <Route path='reviews' element={ < Reviews />}/>
         </Routes>
       </>
