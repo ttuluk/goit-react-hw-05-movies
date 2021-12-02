@@ -1,0 +1,18 @@
+.text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.text_overviews {
+  background-color: burlywood;
+  margin: 0;
+  padding: 20px;
+  font-style: italic;
+  width: 400px;
+}
+
+.list {
+  list-style: none;
+  font-size: 14px;
+  font-weight: 700;
+}

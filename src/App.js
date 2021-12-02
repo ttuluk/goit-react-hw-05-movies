@@ -4,11 +4,10 @@ import Navigation from './Navigation/Navigation';
 import HomePage from './components/views/HomePage';
 import Movies from './components/views/MoviesPage';
 import NotFoundView from './components/views/NotFoundView';
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MoviesDetailsPage from './components/views/MovieDetailsPage';
 
 function App() {
-  const [movieId, setMovieId] = useState('');
 
   return (
     <div>

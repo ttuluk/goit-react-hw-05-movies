@@ -1,7 +1,33 @@
+import React, { useState, useEffect } from "react";
+import { useParams} from 'react-router-dom';
+import reviewsMovieApi from "../services/ReviewsApi";
+import styles from './Reviews.module.css';
+
 export default function Reviews() {
-    return (
-        <>
-            <p>Привет ПАПАП</p>
-        </>
-    )
+    const { movieId } = useParams();
+    const [movieReviews, setMovieReviews] = useState(null);
+ 
+    useEffect(() => {
+        reviewsMovieApi
+            .fetchReviewsMovie(movieId)
+            .then((movieElem) => setMovieReviews(movieElem.results))
+            .catch((error) => console.log(error));
+    }, [movieId]);
+
+
+        return (
+            <>
+                {movieReviews && <ul>
+                {movieReviews.map((movie) =>{
+                    return (
+                        <li key={movie.id} >
+                            {movie.author}
+                            <p>{movie.content}</p>
+                        </li>
+                    )
+                })}
+            </ul>}
+            </>
+        )
+
 }

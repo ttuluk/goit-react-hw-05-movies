@@ -2,19 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import searchMovieApi from "../services/searchMovieApi";
 import { toast } from "react-toastify";
-import styles from '../MoviesPage/MoviePage.module.css'
-import detailsMovieApi from "../services/detailsMovieApi";
+import styles from '../CardStyle/GalleryMovie.module.css';
+
 
 
 export default function Movies() {
-    // const match = useRouteMatch();
-
     const [searchMovie, setSearchMovie] = useState(null);
     const [searchName, setSearchName] = useState('');
     const [searchNameSubmit, setSearchNameSubmit] = useState('');
-    const [movieId, setMovieId] = useState('');
     
-
     const handleClick = (event) => {
     const value = event.currentTarget.value.toLowerCase();
     setSearchName(() => value);
@@ -26,18 +22,12 @@ export default function Movies() {
     if (searchName.trim() === "") {
       toast("Input name for search movies");
       return;
-        }
+        };
 setSearchNameSubmit(searchName);
     // onSubmit(searchName);
     reset();
     };
 
-    const movieClick = (e) => {
-    e.preventDefault();
-        console.dir(e.currentTarget);
-        setMovieId(e.currentTarget.id);
-        
-    };
 
     const reset = () => {
     setSearchName(()=> '');
@@ -55,7 +45,6 @@ setSearchNameSubmit(searchName);
         <>
          <form className={styles.searchForm} onSubmit={handleSubmite}>
           <button type="submit" className={styles.form_button}>Search
-            {/* <span className={styles.button_label}>Search</span> */}
           </button>
 
           <input
@@ -70,15 +59,18 @@ setSearchNameSubmit(searchName);
             </form>
 
 
-            {searchMovie && <ul>
-                {searchMovie.map((movie) =>{
+            {searchMovie && <section className={styles.container}>
+                <ul className={styles.movie_list}>
+                {searchMovie.map((movie) =>{ console.log(movie);
                     return (
-                        <li key={movie.id} onClick={movieClick}>
-                            <Link id={movie.id} to={`/movies${movie.id}`} >{movie.original_title} </Link>
+                        <li key={movie.id} className={styles.movie_item}>
+                            <img className={styles.image} src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.original_title} width='200'/>
+                            <Link className={styles.link} id={movie.id} to={`/movies${movie.id}`} >{movie.original_title} </Link>
                         </li>
                     )
                 })}
-            </ul>}
+                </ul>
+            </section>}
         </>
 
     );
