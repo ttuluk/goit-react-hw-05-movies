@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useParams, Routes, Route, Link } from 'react-router-dom';
 import detailsMovieApi from "../services/detailsMovieApi";
-import Cast from "../Cast/Cast";
-import Reviews from "../Reviews/Reviews";
 import styles from '../MovieDetailsPage/MovieDetailsPage.module.css';
+
+const Cast = lazy(() =>
+  import('../Cast/Cast.jsx' /* webpackChunkName: "authors-subview"*/),
+);
+const Reviews= lazy(() =>
+  import('../Reviews/Reviews.jsx' /* webpackChunkName: "authors-subview"*/),
+);
 
 export default function MoviesDetailsPage () {
     const {movieId} = useParams();
@@ -15,7 +20,7 @@ export default function MoviesDetailsPage () {
             .then((movieElem) => setMovieDetails(movieElem) )
             .catch((error) => console.log(error));
     }, [movieId]);
-console.log(movieDetails);
+
   return (
       <>
           {movieDetails && (<>
@@ -33,11 +38,12 @@ console.log(movieDetails);
           </>
           )
           }
-
+    <Suspense fallback={<h1>Загружаем ...</h1>}>
         <Routes>
         <Route path='cast' element={<Cast  />} />
         <Route path='reviews' element={ < Reviews />}/>
         </Routes>
+        </Suspense>
       </>
   )
 };
