@@ -59,7 +59,7 @@ setSearchNameSubmit(searchName);
             </form>
 
 
-            {searchMovie && <section className={styles.container}>
+            {searchMovie && <section >
                 <ul className={styles.movie_list}>
                 {searchMovie.map((movie) =>{
                     return (

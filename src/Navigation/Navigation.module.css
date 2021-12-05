@@ -4,6 +4,12 @@
 }
 
 .active {
-  color: red;
-  background-color: rgba(188, 143, 183, 0.33);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.inactive:hover,
+.active:focus {
+  color: rgb(243, 53, 94);
+  cursor: pointer;
 }
