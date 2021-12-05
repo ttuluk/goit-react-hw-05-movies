@@ -29,7 +29,7 @@ function App() {
       <header className='App-header'><Navigation /></header>
       <Suspense fallback={<h1>Загружаем ...</h1>}>
        <Routes>
-        <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
         <Route exact="true" path="/movies" element={<Movies />} />
         <Route path="/movies:movieId" element={<MoviesDetailsPage />} >
         <Route path="cast" />
