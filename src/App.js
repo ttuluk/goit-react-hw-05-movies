@@ -27,7 +27,7 @@ function App() {
   return (
     <div>
       <header className='App-header'><Navigation /></header>
-      <Suspense fallback={<h1>Загружаем ...</h1>}>
+      <Suspense fallback={<h1>Loading ...</h1>}>
        <Routes>
         <Route path="/" element={<HomePage />} />
         <Route exact="true" path="/movies" element={<Movies />} />

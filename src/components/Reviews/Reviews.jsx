@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams} from 'react-router-dom';
 import reviewsMovieApi from "../services/ReviewsApi";
+import styles from './Reviews.module.css'
 
 export default function Reviews() {
     const { movieId } = useParams();
@@ -15,7 +16,7 @@ export default function Reviews() {
 
 
         return (
-            <>
+            <section className={styles.container}>
                 {movieReviews && <ul>
                 {movieReviews.map((movie) =>{
                     return (
@@ -26,7 +27,7 @@ export default function Reviews() {
                     )
                 })}
             </ul>}
-            </>
+            </section>
         )
 
 }

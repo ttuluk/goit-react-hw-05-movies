@@ -23,7 +23,7 @@ export default function MoviesDetailsPage () {
 
   return (
       <>
-          {movieDetails && (<>
+          {movieDetails && ( <section className={styles.container}>
         <h2>{movieDetails.title}</h2>
          <img className={styles.image} src={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`} alt={movieDetails.title} width='200'/>
         
@@ -31,14 +31,17 @@ export default function MoviesDetailsPage () {
         <p className={styles.text}>Rating : {movieDetails.vote_average}</p>
         <ul className={styles.list}>Genres: {movieDetails.genres.map((genre) => <li key={genre.id} className={styles.text}>{genre.name}</li>)}
         </ul>
-        <ul className={styles.list}>Countries: {movieDetails.production_countries.map((country) => <li key={country.id} className={styles.text}>{country.name}</li>)}
-      </ul>
-              <Link to={`cast`} >Cast</Link>
-              <Link to={`reviews`} >Reviws</Link>
-          </>
+        <ul className={styles.list}>Countries: {movieDetails.production_countries.map((country) =>
+          <li key={country.id} className={styles.text}>{country.name}</li>)}
+        </ul>
+        <div className={styles.link_box}>
+          <Link className={styles.link} to={`cast`} >Cast</Link>
+          <Link className={styles.link} to={`reviews`} >Reviws</Link>
+        </div>
+          </section>
           )
           }
-    <Suspense fallback={<h1>Загружаем ...</h1>}>
+    <Suspense fallback={<h1>Loading ...</h1>}>
         <Routes>
         <Route path='cast' element={<Cast  />} />
         <Route path='reviews' element={ < Reviews />}/>

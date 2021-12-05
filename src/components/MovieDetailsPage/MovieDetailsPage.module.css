@@ -1,3 +1,11 @@
+.container {
+  width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .text {
   font-size: 14px;
   font-weight: 500;
@@ -15,4 +23,21 @@
   list-style: none;
   font-size: 14px;
   font-weight: 700;
+}
+.link_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  color: black;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.link:hover,
+.link:focus {
+  color: rgb(243, 119, 53);
+  cursor: pointer;
 }
