@@ -42,7 +42,7 @@ setSearchNameSubmit(searchName);
 
     
     return (
-        <>
+        <section className={styles.container}>
          <form className={styles.searchForm} onSubmit={handleSubmite}>
           <button type="submit" className={styles.form_button}>Search
           </button>
@@ -61,7 +61,7 @@ setSearchNameSubmit(searchName);
 
             {searchMovie && <section className={styles.container}>
                 <ul className={styles.movie_list}>
-                {searchMovie.map((movie) =>{ console.log(movie);
+                {searchMovie.map((movie) =>{
                     return (
                         <li key={movie.id} className={styles.movie_item}>
                             <img className={styles.image} src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.original_title} width='200'/>
@@ -71,7 +71,7 @@ setSearchNameSubmit(searchName);
                 })}
                 </ul>
             </section>}
-        </>
+        </section>
 
     );
 };

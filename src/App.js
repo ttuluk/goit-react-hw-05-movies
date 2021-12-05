@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div>
-      <header><Navigation /></header>
+      <header className='App-header'><Navigation /></header>
       <Suspense fallback={<h1>Загружаем ...</h1>}>
        <Routes>
         <Route path="/" element={<HomePage />} />
