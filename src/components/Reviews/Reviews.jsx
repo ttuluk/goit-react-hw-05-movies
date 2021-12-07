@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams} from 'react-router-dom';
-import reviewsMovieApi from "../services/ReviewsApi";
+import {apiReviews} from "../services/api";
 import styles from './Reviews.module.css'
 
 export default function Reviews() {
@@ -8,17 +8,17 @@ export default function Reviews() {
     const [movieReviews, setMovieReviews] = useState(null);
  
     useEffect(() => {
-        reviewsMovieApi
+        apiReviews
             .fetchReviewsMovie(movieId)
             .then((movieElem) => setMovieReviews(movieElem.results))
             .catch((error) => console.log(error));
     }, [movieId]);
 
 
-        return (
-            <section className={styles.container}>
-                {movieReviews && <ul>
-                {movieReviews.map((movie) =>{
+    return (
+        <section className={styles.container}>
+            {movieReviews && <ul>
+                {movieReviews.map((movie) => {
                     return (
                         <li key={movie.id} >
                             {movie.author}
@@ -27,7 +27,6 @@ export default function Reviews() {
                     )
                 })}
             </ul>}
-            </section>
-        )
-
-}
+        </section>
+    );
+};
